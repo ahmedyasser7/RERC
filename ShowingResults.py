@@ -36,6 +36,8 @@ for estate in estates:
 
 def selected():
     print(tree.selection())
+    Results.destroy()
+    import Payment
 
 
 btn1 = ctk.CTkButton(Results, text='Select', command=selected)
