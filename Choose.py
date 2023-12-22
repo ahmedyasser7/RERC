@@ -19,7 +19,8 @@ def Reservation():
 
 
 def Cancel():
-    pass
+    Choose.destroy()
+    import SuccessfulOperation
 
 
 button1 = ctk.CTkButton(frame, text="Reservation", command=Reservation)
