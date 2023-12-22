@@ -23,11 +23,13 @@ image_label.pack()
 
 
 def owner():
-    pass
+    Hello.destroy()
+    import LoginOwner
 
 
 def tenant():
-    pass
+    Hello.destroy()
+    import Choose
 
 
 button1 = ctk.CTkButton(frame, text="Owner", command=owner)
