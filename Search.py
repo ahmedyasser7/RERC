@@ -87,7 +87,8 @@ combobox_room.pack(pady=12, padx=10)
 
 
 def search():
-    pass
+    Search.destroy()
+    import ShowingResults
 
 
 button1 = ctk.CTkButton(frame, text="Search", command=search)
