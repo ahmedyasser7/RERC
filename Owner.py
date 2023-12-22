@@ -31,10 +31,10 @@ def delete():
 def Clear():
     txtEstate.delete("0", END)
     txtArea.delete("0", END)
-    txtLocation.delete("0", END)
+    txtDate.delete("0", END)
     txtPrice.delete("0", END)
     txtStatus.delete("0", END)
-    txtDate.delete("0", END)
+    txtRooms.delete("0", END)
 
 
 def get_data(event):
@@ -51,37 +51,37 @@ def get_data(event):
 
 
 def add():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtDate.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
     # db.insert(
 
-    #     txtName.get(),
-    #     txtGPA.get(),
-    #     txtemail.get(),
-    #     txtsection.get(),
-    #     txtlevel.get(),
-    #     txtaddress.get()
+    #     txtEstate.get(),
+    #     txtArea.get(),
+    #     txtLocation.get(),
+    #     txtPrice.get(),
+    #     txtStatus.get(),
+    #     txtDate.get()
     #     )
-    messagebox.showinfo("Success", "Added new student")
+    messagebox.showinfo("Success", "Added new proprety")
     Clear()
     displayAll()
 
 
 def update1():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtDate.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
     # db.update(row[0],
-    #     txtName.get(),
-    #     txtGPA.get(),
-    #     txtemail.get(),
-    #     txtsection.get(),
-    #     txtlevel.get(),
-    #     txtaddress.get()
+    #     txtEstate.get(),
+    #     txtArea.get(),
+    #     txtLocation.get(),
+    #     txtPrice.get(),
+    #     txtStatus.get(),
+    #     txtDate.get()
     #     )
 
-    messagebox.showinfo("Success", "the student data is update")
+    messagebox.showinfo("Success", "the proprety data is updated")
     Clear()
     displayAll()
 
@@ -110,7 +110,7 @@ txtEstate = Entry(Entries_frame, width=20, font=(
 txtEstate.place(x=130, y=90)
 
 
-lblArea = Label(Entries_frame, text="Price:            ", font=(
+lblArea = Label(Entries_frame, text="Area:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
 lblArea.place(x=10, y=130)
 txtArea = Entry(Entries_frame, width=20, font=(
@@ -118,20 +118,18 @@ txtArea = Entry(Entries_frame, width=20, font=(
 txtArea.place(x=130, y=130)
 
 
-lblLocation = Label(Entries_frame, text="Area:            ", font=(
+lblDate = Label(Entries_frame, text="Location:      ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblLocation.place(x=10, y=170)
-txtLocation = Entry(Entries_frame, width=20, font=(
+lblDate.place(x=10, y=170)
+txtDate = Entry(Entries_frame, width=20, font=(
     'Calibri ', 15), textvariable=Location)
-txtLocation.place(x=130, y=170)
+txtDate.place(x=130, y=170)
 
-
-lblPrice = Label(Entries_frame, text="Location:      ", font=(
+lblPrice = Label(Entries_frame, text="Price:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
 lblPrice.place(x=10, y=210)
-txtPrice = ttk.Combobox(Entries_frame, state='readonly', width=18, font=(
+txtPrice = Entry(Entries_frame, width=20, font=(
     'Calibri ', 15), textvariable=Price)
-txtPrice['values'] = ("CS", "IS", "AI", "SC")
 txtPrice.place(x=130, y=210)
 
 
@@ -140,24 +138,24 @@ lblStatus = Label(Entries_frame, text="Status:          ", font=(
 lblStatus.place(x=10, y=250)
 txtStatus = ttk.Combobox(Entries_frame, state='readonly',
                          width=18, font=('Calibri ', 15), textvariable=Status)
-txtStatus['values'] = ("one", "two", "thrid", "fourth")
+txtStatus['values'] = ("available", "Rented")
 txtStatus.place(x=130, y=250)
 
 
-lblDate = Label(Entries_frame, text="No. Rooms:  ", font=(
+lblRooms = Label(Entries_frame, text="No. Rooms:  ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblDate.place(x=10, y=290)
-txtDate = Entry(Entries_frame, width=20, font=(
+lblRooms.place(x=10, y=290)
+txtRooms = Entry(Entries_frame, width=20, font=(
     'Calibri ', 15), textvariable=Date)
-txtDate.place(x=130, y=290)
+txtRooms.place(x=130, y=290)
 
 
-lblLocation = Label(Entries_frame, text="Date:            ", font=(
+lblDate = Label(Entries_frame, text="Date:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblLocation.place(x=10, y=170)
-txtLocation = Entry(Entries_frame, width=20, font=(
+lblDate.place(x=10, y=170)
+txtDate = Entry(Entries_frame, width=20, font=(
     'Calibri ', 15), textvariable=Location)
-txtLocation.place(x=130, y=170)
+txtDate.place(x=130, y=170)
 # ------------Buttons------------
 btn_frame = Frame(Entries_frame, bg='#003566', bd=1, relief=SOLID)
 btn_frame.place(x=15, y=390, width=335, height=100)
