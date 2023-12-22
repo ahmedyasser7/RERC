@@ -216,6 +216,8 @@ style.configure('Treeview', background='#343a40', font=(
 style.map('Treeview', foreground=[('selected', 'black')], background=[
           ('selected', '#f6fff8')])
 style.configure('Treeview.Heading', font=('Arial', 14))
+treeScroll = Frame(OwnerMain)
+treeScroll.pack(side=RIGHT, fill=Y)
 # style.configure("mystyle.Treeview", font=('Calibri', 13), rowheight=50)
 # style.configure("mystyle.Treeview.Heading", font=('Calibri', 13))
 
