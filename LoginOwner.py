@@ -14,7 +14,8 @@ OwnerLogin.resizable(False, True)
 
 
 def login():
-    print("Hello!, Enter Your ID: ")
+    OwnerLogin.destroy()
+    import Owner
 
 
 frame = ctk.CTkScrollableFrame(OwnerLogin)
