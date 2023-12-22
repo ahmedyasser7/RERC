@@ -31,7 +31,7 @@ def delete():
 def Clear():
     txtEstate.delete("0", END)
     txtArea.delete("0", END)
-    txtLocation.delete("0", END)
+    txtDate.delete("0", END)
     txtPrice.delete("0", END)
     txtStatus.delete("0", END)
     txtRooms.delete("0", END)
@@ -51,7 +51,7 @@ def get_data(event):
 
 
 def add():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
     # db.insert(
@@ -69,7 +69,7 @@ def add():
 
 
 def update1():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
     # db.update(row[0],
@@ -118,12 +118,12 @@ txtArea = Entry(OwnerFrame, width=20, font=(
 txtArea.place(x=130, y=130)
 
 
-lblLocation = Label(OwnerFrame, text="Location:      ", font=(
+lblDate = Label(OwnerFrame, text="Date:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblLocation.place(x=10, y=170)
-txtLocation = Entry(OwnerFrame, width=20, font=(
+lblDate.place(x=10, y=170)
+txtDate = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Location)
-txtLocation.place(x=130, y=170)
+txtDate.place(x=130, y=170)
 
 lblPrice = Label(OwnerFrame, text="Price:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
@@ -142,7 +142,7 @@ txtStatus['values'] = ("available", "Rented")
 txtStatus.place(x=130, y=250)
 
 
-lblRooms = Label(OwnerFrame, text="No. Rooms:  ", font=(
+lblRooms = Label(OwnerFrame, text="No. Rooms: ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
 lblRooms.place(x=10, y=290)
 txtRooms = Entry(OwnerFrame, width=20, font=(
@@ -150,12 +150,12 @@ txtRooms = Entry(OwnerFrame, width=20, font=(
 txtRooms.place(x=130, y=290)
 
 
-lblLocation = Label(OwnerFrame, text="Date:            ", font=(
+lblDate = Label(OwnerFrame, text="Location:      ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblLocation.place(x=10, y=170)
-txtLocation = Entry(OwnerFrame, width=20, font=(
+lblDate.place(x=10, y=330)
+txtDate = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Location)
-txtLocation.place(x=130, y=170)
+txtDate.place(x=130, y=330)
 ####### Buttons #######
 btn_frame = Frame(OwnerFrame, bg='#003566', bd=1, relief=SOLID)
 btn_frame.place(x=15, y=390, width=335, height=100)
@@ -236,7 +236,7 @@ tv.column("5", width="90", anchor='c')
 tv.heading("3", text="Area")
 tv.column("3", width="90", anchor='c')
 
-tv.heading("4", text="location")
+tv.heading("4", text="Date")
 tv.column("4", width="90", anchor='c')
 
 tv.heading("6", text="Status")
@@ -245,10 +245,7 @@ tv.column("6", width="90", anchor='c')
 tv.heading("7", text="No. rooms")
 tv.column("7", width="90", anchor='c')
 
-tv.heading("7", text="Date")
-tv.column("7", width="90", anchor='c')
-
-tv.heading("8", text="No. Rooms")
+tv.heading("8", text="Location")
 tv.column("8", width="90", anchor='c')
 
 tv['show'] = 'headings'
