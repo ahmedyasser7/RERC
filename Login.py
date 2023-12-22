@@ -12,10 +12,10 @@ UserLogin.resizable(False, True)
 
 
 def login():
-    print(f"Hello!, ")
+    UserLogin.destroy()
+    import Search
 
 
-    # mes = tk.messagebox.showerror("Welcome", "3amel eh?")
 frame = ctk.CTkScrollableFrame(UserLogin)
 frame.pack(pady=20, padx=60, fill="both", expand=True)
 
