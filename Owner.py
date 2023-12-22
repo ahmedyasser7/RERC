@@ -6,7 +6,7 @@ from tkinter import messagebox
 from tkinter import Tk
 
 
-OwnerMain = Tk()   #
+OwnerMain = Tk()
 OwnerMain.title("Owner")
 OwnerMain.geometry('1240x620')
 OwnerMain.iconbitmap('favicon.ico')
@@ -31,7 +31,7 @@ def delete():
 def Clear():
     txtEstate.delete("0", END)
     txtArea.delete("0", END)
-    txtDate.delete("0", END)
+    txtLocation.delete("0", END)
     txtPrice.delete("0", END)
     txtStatus.delete("0", END)
     txtRooms.delete("0", END)
@@ -51,7 +51,7 @@ def get_data(event):
 
 
 def add():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
     # db.insert(
@@ -69,7 +69,7 @@ def add():
 
 
 def update1():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
     # db.update(row[0],
@@ -86,10 +86,10 @@ def update1():
     displayAll()
 
 
-# ------------Entries Frame------------
-Entries_frame = Frame(OwnerMain, bg='#252422')
-Entries_frame.place(x=1, y=1, width=1000, height=690)
-title = Label(Entries_frame, text="        Real state rental company         ",
+####### Frame #######
+OwnerFrame = Frame(OwnerMain, bg='#252422')
+OwnerFrame.place(x=1, y=1, width=1000, height=690)
+title = Label(OwnerFrame, text="        Real state rental company         ",
               font=('Calibri', 18, 'bold'), bg='#003566', fg='white')
 title.place(x=10, y=1)
 
@@ -102,62 +102,62 @@ Status = StringVar()
 Date = StringVar()
 
 
-lblEstate = Label(Entries_frame, text="Estate Type:", font=(
+lblEstate = Label(OwnerFrame, text="Estate Type:", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
 lblEstate.place(x=10, y=90)
-txtEstate = Entry(Entries_frame, width=20, font=(
+txtEstate = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Estate)
 txtEstate.place(x=130, y=90)
 
 
-lblArea = Label(Entries_frame, text="Area:            ", font=(
+lblArea = Label(OwnerFrame, text="Area:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
 lblArea.place(x=10, y=130)
-txtArea = Entry(Entries_frame, width=20, font=(
+txtArea = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Area)
 txtArea.place(x=130, y=130)
 
 
-lblDate = Label(Entries_frame, text="Location:      ", font=(
+lblLocation = Label(OwnerFrame, text="Location:      ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblDate.place(x=10, y=170)
-txtDate = Entry(Entries_frame, width=20, font=(
+lblLocation.place(x=10, y=170)
+txtLocation = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Location)
-txtDate.place(x=130, y=170)
+txtLocation.place(x=130, y=170)
 
-lblPrice = Label(Entries_frame, text="Price:            ", font=(
+lblPrice = Label(OwnerFrame, text="Price:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
 lblPrice.place(x=10, y=210)
-txtPrice = Entry(Entries_frame, width=20, font=(
+txtPrice = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Price)
 txtPrice.place(x=130, y=210)
 
 
-lblStatus = Label(Entries_frame, text="Status:          ", font=(
+lblStatus = Label(OwnerFrame, text="Status:          ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
 lblStatus.place(x=10, y=250)
-txtStatus = ttk.Combobox(Entries_frame, state='readonly',
+txtStatus = ttk.Combobox(OwnerFrame, state='readonly',
                          width=18, font=('Calibri ', 15), textvariable=Status)
 txtStatus['values'] = ("available", "Rented")
 txtStatus.place(x=130, y=250)
 
 
-lblRooms = Label(Entries_frame, text="No. Rooms:  ", font=(
+lblRooms = Label(OwnerFrame, text="No. Rooms:  ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
 lblRooms.place(x=10, y=290)
-txtRooms = Entry(Entries_frame, width=20, font=(
+txtRooms = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Date)
 txtRooms.place(x=130, y=290)
 
 
-lblDate = Label(Entries_frame, text="Date:            ", font=(
+lblLocation = Label(OwnerFrame, text="Date:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblDate.place(x=10, y=170)
-txtDate = Entry(Entries_frame, width=20, font=(
+lblLocation.place(x=10, y=170)
+txtLocation = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Location)
-txtDate.place(x=130, y=170)
-# ------------Buttons------------
-btn_frame = Frame(Entries_frame, bg='#003566', bd=1, relief=SOLID)
+txtLocation.place(x=130, y=170)
+####### Buttons #######
+btn_frame = Frame(OwnerFrame, bg='#003566', bd=1, relief=SOLID)
 btn_frame.place(x=15, y=390, width=335, height=100)
 
 
@@ -205,7 +205,7 @@ btnClear = Button(btn_frame,
                   ).place(x=170, y=50)
 
 
-# ------------Table Frame------------
+####### Tree view #######
 
 tree_frame = Frame(OwnerMain, bg='#343a40')
 tree_frame.place(x=365, y=1, width=875, height=615)
@@ -221,30 +221,33 @@ style.configure('Treeview.Heading', font=('Arial', 14))
 
 
 tv = ttk.Treeview(tree_frame, columns=(
-    1, 2, 3, 4, 5, 6, 7), style="mystyle.Treeview")
+    1, 2, 3, 4, 5, 6, 7, 8), style="mystyle.Treeview")
 tv.heading("1", text="ID")
-tv.column("1", width="40", anchor='c')
+tv.column("1", width="30", anchor='c')
 
 tv.heading("2", text="Estate type")
-tv.column("2", width="140", anchor='c')
+tv.column("2", width="90", anchor='c')
 
 tv.heading("5", text="Price")
-tv.column("5", width="50", anchor='c')
+tv.column("5", width="90", anchor='c')
 
 tv.heading("3", text="Area")
-tv.column("3", width="120", anchor='c')
+tv.column("3", width="90", anchor='c')
 
 tv.heading("4", text="location")
-tv.column("4", width="150", anchor='c')
+tv.column("4", width="90", anchor='c')
 
 tv.heading("6", text="Status")
-tv.column("6", width="150", anchor='c')
+tv.column("6", width="90", anchor='c')
 
 tv.heading("7", text="No. rooms")
-tv.column("7", width="150", anchor='c')
+tv.column("7", width="90", anchor='c')
 
 tv.heading("7", text="Date")
-tv.column("7", width="100", anchor='c')
+tv.column("7", width="90", anchor='c')
+
+tv.heading("8", text="No. Rooms")
+tv.column("8", width="90", anchor='c')
 
 tv['show'] = 'headings'
 tv.bind("<ButtonRelease-1>", get_data)
