@@ -30,7 +30,8 @@ entry4.pack(pady=6, padx=10)
 
 
 def Pay():
-    pass
+    Payment.destroy()
+    import SuccessfulOperation
 
 
 button1 = ctk.CTkButton(frame, text="Pay", command=Pay, corner_radius=35)
