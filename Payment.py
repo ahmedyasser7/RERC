@@ -21,19 +21,20 @@ Payment.resizable(False, True)
 frame = ctk.CTkScrollableFrame(Payment)
 frame.pack(pady=20, padx=60, fill="both", expand=True)
 
-entry1 = ctk.CTkEntry(frame, placeholder_text="Your Name", corner_radius=15)
+entry1 = ctk.CTkEntry(
+    frame, width=160, placeholder_text="Your Name", corner_radius=15)
 entry1.pack(pady=6, padx=10)
 
 entry2 = ctk.CTkEntry(
-    frame, placeholder_text="Your Phone number", corner_radius=15)
+    frame, width=160, placeholder_text="Your Phone number", corner_radius=15)
 entry2.pack(pady=6, padx=10)
 
 entry3 = ctk.CTkEntry(
-    frame, placeholder_text="Your National ID", corner_radius=15)
+    frame, width=160, placeholder_text="Your National ID", corner_radius=15)
 entry3.pack(pady=6, padx=10)
 
 entry4 = ctk.CTkEntry(
-    frame, placeholder_text="Your visa card number", show="*", corner_radius=15)
+    frame, width=160, placeholder_text="Your visa card number", show="*", corner_radius=15)
 entry4.pack(pady=6, padx=10)
 
 
