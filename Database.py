@@ -8,7 +8,7 @@ class Database():
         self.cur = self.con.cursor()
 
         self.cur.execute(
-            "CREATE TABLE if not exists properties(id Integer Primary key autoincrement, Estate text, Area float, Date text, Price integer, Status text, Rooms integer, Location text")
+            "CREATE TABLE if not exists properties(id Integer Primary key autoincrement, Estate text, Area integer, Date text, Price integer, Status text, Rooms integer, Location text")
         self.con.commit()
 
     def insert(self, Estate, Area, Date, Price, Status, Rooms, Location):
