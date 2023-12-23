@@ -32,6 +32,8 @@ TheMainLabel.pack(pady=12, padx=10)
 # combobox_type.set("Rent")
 # combobox_type.pack(pady= 12, padx= 10)
 
+List1 = []
+
 com2 = ctk.CTkLabel(frame, text="Choose the type of the estate",
                     bg_color='#22333b', width=20)
 com2.pack()
@@ -39,6 +41,7 @@ com2.pack()
 
 def combobox_call2(choice):
     print("The estate is: ", choice)
+    List1.append(choice)
 
 
 combobox_estate = ctk.CTkComboBox(frame, values=[
@@ -53,6 +56,7 @@ com3.pack()
 
 def combobox_call3(choice):
     print("The area is: ", choice)
+    List1.append(choice)
 
 
 combobox_area = ctk.CTkComboBox(
@@ -67,6 +71,7 @@ com4.pack()
 
 def combobox_call4(choice):
     print("The price is: ", choice)
+    List1.append(choice)
 
 
 combobox_price = ctk.CTkComboBox(frame, values=[
@@ -81,6 +86,7 @@ com5.pack()
 
 def combobox_call5(choice):
     print("The number of rooms is: ", choice)
+    List1.append(choice)
 
 
 combobox_room = ctk.CTkComboBox(
