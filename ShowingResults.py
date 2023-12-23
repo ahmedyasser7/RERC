@@ -22,8 +22,7 @@ Results.resizable(False, True)
 
 frame = ctk.CTkScrollableFrame(Results)
 frame.pack(pady=20, padx=60, fill="both", expand=True)
-estates = [(1, 'Villa', 230, 'Cairo', 1200, 'Rented', '17-7-2023'),
-           ]
+
 tree = Treeview(frame, columns=['id', 'Estate', 'Area',
                 'Location', 'Price', 'Status', 'Date'], show='headings', selectmode='browse')
 tree.heading('id', text='ID')
@@ -37,8 +36,12 @@ tree.column('id', width=30, anchor='center')
 
 tree.pack()
 
+estates = [(1, 'Villa', 300, 'Cairo', 7000000, 'Rented', '17-7-2023'),
+           (2, 'Room', 100, 'Alexandria', 500, 'availble', '29-12-2023'),
+           (3, 'Apartment', 120, 'Giza', 100000, 'availble', '5-9-2023')]
+
 for estate in estates:
-    tree.insert('', 'end', iid=estate[0], values=estates)
+    tree.insert('', 'end', iid=estate[0], values=estate)
 
 
 def selected():
