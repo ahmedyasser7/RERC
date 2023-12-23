@@ -19,43 +19,50 @@ def connect_db():
     return conn
 
 
+con = connect_db()
+
+
 def login():
-    #     username = username_entry.get()
-    #     password = password_entry.get()
+    username = username_entry.get()
+    password = password_entry.get()
+    conn = connect_db()
+    cursor = conn.cursor()
+    # cursor.execute(
+    #     "CREATE TABLE if not exists UserData (username TEXT, password INTEGER)"
+    # )
+    cursor.execute(
+        "SELECT * FROM UserData WHERE username = ? AND password = ?", (username, password))
+    result = cursor.fetchone()
 
-    #     conn = connect_db()
-    #     cursor = conn.cursor()
+    if result is None:
+        messagebox.showerror("Error", "Invalid username or password.")
+    else:
+        messagebox.showinfo("Success", "Logged in successfully!")
+        UserLogin.destroy()
+        import Search
 
-    #     cursor.execute(
-    #         "SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
-    #     result = cursor.fetchone()
-
-    #     if result is None:
-    #         messagebox.showerror("Error", "Invalid username or password.")
-    #     else:
-    #         messagebox.showinfo("Success", "Logged in successfully!")
-
-    #     conn.close()
-    UserLogin.destroy()
-    import Search
+    conn.close()
 
 
 def create_account():
     pass
-#     username = username_entry.get()
-#     password = password_entry.get()
+    username = username_entry.get()
+    password = password_entry.get()
 
-#     conn = connect_db()
-#     cursor = conn.cursor()
+    conn = connect_db()
+    cursor = conn.cursor()
 
-#     try:
-#         cursor.execute("INSERT INTO users VALUES (?, ?)", (username, password))
-#         conn.commit()
-#         messagebox.showinfo("Success", "Account created successfully!")
-#     except sqlite3.IntegrityError:
-#         messagebox.showerror("Error", "Username already exists.")
-#     finally:
-#         conn.close()
+    try:
+        cursor.execute("INSERT INTO UserData VALUES (?, ?)",
+                       (username, password))
+        conn.commit()
+        messagebox.showinfo("Success", "Account created successfully!")
+        UserLogin.destroy()
+        import Search
+    except sqlite3.IntegrityError:
+        messagebox.showerror("Error", "Username already exists.")
+    finally:
+        conn.close()
 
 
 frame = ctk.CTkScrollableFrame(UserLogin)
