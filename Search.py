@@ -21,10 +21,6 @@ frame = ctk.CTkScrollableFrame(Search)
 frame.pack(pady=20, padx=60, fill="both", expand=True)
 
 
-def MainPage():
-    pass
-
-
 TheMainLabel = ctk.CTkLabel(
     frame, text="Let's search Together for your prefrences!", bg_color='#0a0908')
 TheMainLabel.pack(pady=12, padx=10)
