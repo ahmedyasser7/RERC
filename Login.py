@@ -40,12 +40,11 @@ def login():
         messagebox.showinfo("Success", "Logged in successfully!")
         UserLogin.destroy()
         import Search
-
+    conn.commit()
     conn.close()
 
 
 def create_account():
-    pass
     username = username_entry.get()
     password = password_entry.get()
 
