@@ -22,8 +22,8 @@ frame.pack(fill="both", expand=True)
 
 
 def Rentment():
-    # Modify here!
-    pass
+    Choose.destroy()
+    import Login
 
 
 def Cancel():
