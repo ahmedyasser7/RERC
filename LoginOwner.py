@@ -3,9 +3,9 @@ import tkinter as tk
 import sqlite3
 
 
-# def connect_db():
-#     conn = sqlite3.connect('')
-#     return conn
+def connect_db():
+    conn = sqlite3.connect('')
+    return conn
 
 
 ctk.set_appearance_mode("dark")
