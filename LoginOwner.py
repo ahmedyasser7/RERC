@@ -1,42 +1,13 @@
 import customtkinter as ctk
 import tkinter as tk
+from tkinter import messagebox
 import sqlite3
-
-
-def connect_db():
-    conn = sqlite3.connect('')
-    return conn
-
-
-ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme("dark-blue")
 
 OwnerLogin = ctk.CTk()
 OwnerLogin.title("LoginOwner")
 OwnerLogin.geometry("600x450")
 OwnerLogin.iconbitmap('favicon.ico')
 OwnerLogin.resizable(False, True)
-
-
-def login():
-    #     username = entry1.get()
-    #     password = entry2.get()
-
-    #     conn = connect_db()
-    #     cursor = conn.cursor()
-
-    #     cursor.execute(
-    #         "SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
-    #     result = cursor.fetchone()
-
-    #     if result is None:
-    #         messagebox.showerror("Error", "Invalid username or password.")
-    #     else:
-    #         messagebox.showinfo("Success", "Logged in successfully!")
-
-    #     conn.close()
-    OwnerLogin.destroy()
-    import Owner
 
 
 frame = ctk.CTkScrollableFrame(OwnerLogin)
@@ -46,11 +17,61 @@ TheLabel = ctk.CTkLabel(frame, text="Hello our Partner!")
 TheLabel.pack(pady=12, padx=10)
 
 entry1 = ctk.CTkEntry(frame, placeholder_text="ID")
-entry1.pack(pady=12, padx=10)
-
-
 entry2 = ctk.CTkEntry(frame, placeholder_text="Password", show="*")
+
+entry1.pack(pady=12, padx=10)
 entry2.pack(pady=12, padx=10)
+
+
+def connect_db():
+    conn = sqlite3.connect('OwnerData')
+    return conn
+
+
+# con = connect_db()
+# cursor = con.cursor()
+# cursor.execute(
+#     "CREATE TABLE if not exists OwnerData (ID INTEGER, password TEXT)"
+# )
+# cursor.execute("INSERT INTO OwnerData VALUES (?, ?)",
+#                (1, 123))
+# cursor.execute("INSERT INTO OwnerData VALUES (?, ?)",
+#                (2, 456))
+# cursor.execute("INSERT INTO OwnerData VALUES (?, ?)",
+#                (3, 789))
+# cursor.execute("INSERT INTO OwnerData VALUES (?, ?)",
+#                (4, 2468))
+# con.commit()
+# con.close()
+
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("dark-blue")
+
+
+def login():
+    ID = entry1.get()
+    password = entry2.get()
+
+    conn = connect_db()
+    cursor = conn.cursor()
+    cursor.execute(
+        "CREATE TABLE if not exists OwnerData (ID INTEGER, password INTEGER)"
+    )
+    cursor.execute(
+        "SELECT * FROM OwnerData WHERE ID = ? AND password = ?", (ID, password)
+    )
+
+    conn.commit()
+    result = cursor.fetchone()
+    if result is None:
+        messagebox.showerror("Error", "Invalid ID or password.")
+    else:
+        messagebox.showinfo("Success", "Logged in successfully!")
+        OwnerLogin.destroy()
+        import Owner
+
+    conn.close()
+
 
 button1 = ctk.CTkButton(frame, text="Login", command=login)
 button1.pack(pady=12, padx=10)
