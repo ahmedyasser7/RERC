@@ -4,6 +4,12 @@ from tkinter import StringVar
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import Tk
+import sqlite3
+
+
+def connect_db():
+    conn = sqlite3.connect('')
+    return conn
 
 
 OwnerMain = Tk()

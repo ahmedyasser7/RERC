@@ -1,5 +1,12 @@
 import customtkinter as ctk
 import tkinter as tk
+import sqlite3
+
+
+def connect_db():
+    conn = sqlite3.connect('')
+    return conn
+
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
@@ -14,7 +21,7 @@ frame = ctk.CTkFrame(Choose)
 frame.pack(fill="both", expand=True)
 
 
-def Reservation():
+def Rentment():
     # Modify here!
     pass
 
@@ -24,8 +31,8 @@ def Cancel():
     import SuccessfulOperation
 
 
-button1 = ctk.CTkButton(frame, text="Reservation", command=Reservation)
-button1.pack(pady=10, padx=60)
+button1 = ctk.CTkButton(frame, text="Rentment", command=Rentment)
+button1.pack(pady=30, padx=10)
 
 
 button2 = ctk.CTkButton(frame, text="Cancel", command=Cancel)

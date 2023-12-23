@@ -1,5 +1,12 @@
 import customtkinter as ctk
 import tkinter as tk
+import sqlite3
+
+
+# def connect_db():
+#     conn = sqlite3.connect('')
+#     return conn
+
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
@@ -10,10 +17,24 @@ OwnerLogin.geometry("600x450")
 OwnerLogin.iconbitmap('favicon.ico')
 OwnerLogin.resizable(False, True)
 
-# Need to be edited.
-
 
 def login():
+    #     username = entry1.get()
+    #     password = entry2.get()
+
+    #     conn = connect_db()
+    #     cursor = conn.cursor()
+
+    #     cursor.execute(
+    #         "SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
+    #     result = cursor.fetchone()
+
+    #     if result is None:
+    #         messagebox.showerror("Error", "Invalid username or password.")
+    #     else:
+    #         messagebox.showinfo("Success", "Logged in successfully!")
+
+    #     conn.close()
     OwnerLogin.destroy()
     import Owner
 

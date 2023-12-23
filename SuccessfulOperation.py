@@ -1,6 +1,13 @@
 from PIL import Image
 import customtkinter as ctk
 import tkinter as tk
+import sqlite3
+
+
+def connect_db():
+    conn = sqlite3.connect('')
+    return conn
+
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")

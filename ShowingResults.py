@@ -6,6 +6,13 @@ from tkinter import ttk
 from tkinter.ttk import *
 from tkinter import messagebox
 from tkinter import Tk
+import sqlite3
+
+
+def connect_db():
+    conn = sqlite3.connect('')
+    return conn
+
 
 Results = ctk.CTk()
 Results.iconbitmap('favicon.ico')
