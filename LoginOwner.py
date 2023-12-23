@@ -24,7 +24,7 @@ entry2.pack(pady=12, padx=10)
 
 
 def connect_db():
-    conn = sqlite3.connect('OwnerData')
+    conn = sqlite3.connect('OwnerData.py')
     return conn
 
 
