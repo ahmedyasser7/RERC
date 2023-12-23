@@ -252,4 +252,5 @@ tv['show'] = 'headings'
 tv.bind("<ButtonRelease-1>", get_data)
 tv.place(x=1, y=1, height=610, width=875)
 displayAll()
+
 OwnerMain.mainloop()
