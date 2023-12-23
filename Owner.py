@@ -5,12 +5,8 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import Tk
 import sqlite3
-
-
-def connect_db():
-    conn = sqlite3.connect('')
-    return conn
-
+from Database import Database
+db = Database("properties.db")
 
 OwnerMain = Tk()
 OwnerMain.title("Owner")
@@ -18,18 +14,15 @@ OwnerMain.geometry('1240x620')
 OwnerMain.iconbitmap('favicon.ico')
 OwnerMain.resizable(False, True)
 
-# from db import Database
-# db =Database("student.db")
-
 
 def displayAll():
     tv.delete(*tv.get_children())
-    # for row in db.fetch():
-    #     tv.insert("",END,values=row)
+    for row in db.fetch():
+        tv.insert("", END, values=row)
 
 
 def delete():
-    # db.remove(row[0])
+    db.remove(row[0])
     Clear()
     displayAll()
 
@@ -37,11 +30,11 @@ def delete():
 def Clear():
     txtEstate.delete("0", END)
     txtArea.delete("0", END)
-    txtLocation.delete("0", END)
+    txtDate.delete("0", END)
     txtPrice.delete("0", END)
     txtStatus.delete("0", END)
     txtRooms.delete("0", END)
-    txtLocation.delete("0", END)
+    txtDate.delete("0", END)
 
 
 def get_data(event):
@@ -59,35 +52,34 @@ def get_data(event):
 
 
 def add():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "" or txtLocation.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "" or txtDate.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
-    # db.insert(
-
-    #     txtEstate.get(),
-    #     txtArea.get(),
-    #     txtLocation.get(),
-    #     txtPrice.get(),
-    #     txtStatus.get(),
-    #     txtDate.get()
-    #     )
+    db.insert(
+        txtEstate.get(),
+        txtArea.get(),
+        txtDate.get(),
+        txtPrice.get(),
+        txtStatus.get(),
+        txtDate.get()
+    )
     messagebox.showinfo("Success", "Added new proprety")
     Clear()
     displayAll()
 
 
 def update1():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "" or txtLocation.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "" or txtDate.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
-    # db.update(row[0],
-    #     txtEstate.get(),
-    #     txtArea.get(),
-    #     txtLocation.get(),
-    #     txtPrice.get(),
-    #     txtStatus.get(),
-    #     txtDate.get()
-    #     )
+    db.update(row[0],
+              txtEstate.get(),
+              txtArea.get(),
+              txtLocation.get(),
+              txtPrice.get(),
+              txtStatus.get(),
+              txtDate.get()
+              )
 
     messagebox.showinfo("Success", "the proprety data is updated")
     Clear()
@@ -127,12 +119,12 @@ txtArea = Entry(OwnerFrame, width=20, font=(
 txtArea.place(x=130, y=130)
 
 
-lblLocation = Label(OwnerFrame, text="Date:            ", font=(
+lblDate = Label(OwnerFrame, text="Date:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblLocation.place(x=10, y=170)
-txtLocation = Entry(OwnerFrame, width=20, font=(
+lblDate.place(x=10, y=170)
+txtDate = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Location)
-txtLocation.place(x=130, y=170)
+txtDate.place(x=130, y=170)
 
 lblPrice = Label(OwnerFrame, text="Price:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
@@ -219,7 +211,6 @@ btnClear = Button(btn_frame,
 tree_frame = Frame(OwnerMain, bg='#343a40')
 tree_frame.place(x=365, y=1, width=875, height=615)
 style = ttk.Style()
-# style.theme_use('clam')
 style.configure('Treeview', background='#343a40', font=(
     'Arial', 12), rowheight=30, foreground='#e5e5e5')
 style.map('Treeview', foreground=[('selected', 'black')], background=[
@@ -227,8 +218,6 @@ style.map('Treeview', foreground=[('selected', 'black')], background=[
 style.configure('Treeview.Heading', font=('Arial', 14))
 treeScroll = Frame(OwnerMain)
 treeScroll.pack(side=RIGHT, fill=Y)
-# style.configure("mystyle.Treeview", font=('Calibri', 13), rowheight=50)
-# style.configure("mystyle.Treeview.Heading", font=('Calibri', 13))
 
 
 tv = ttk.Treeview(tree_frame, columns=(
