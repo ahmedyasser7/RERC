@@ -31,10 +31,11 @@ def delete():
 def Clear():
     txtEstate.delete("0", END)
     txtArea.delete("0", END)
-    txtDate.delete("0", END)
+    txtLocation.delete("0", END)
     txtPrice.delete("0", END)
     txtStatus.delete("0", END)
     txtRooms.delete("0", END)
+    txtLocation.delete("0", END)
 
 
 def get_data(event):
@@ -44,14 +45,15 @@ def get_data(event):
     row = data1["values"]
     Estate.set(row[1])
     Area.set(row[2])
-    Location.set(row[3])
+    Date.set(row[3])
     Price.set(row[4])
     Status.set(row[5])
-    Date.set(row[6])
+    Rooms.set(row[6])
+    Location.set(row[7])
 
 
 def add():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "" or txtLocation.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
     # db.insert(
@@ -69,7 +71,7 @@ def add():
 
 
 def update1():
-    if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "":
+    if txtEstate.get() == "" or txtArea.get() == "" or txtLocation.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "" or txtLocation.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
     # db.update(row[0],
@@ -96,10 +98,11 @@ title.place(x=10, y=1)
 id = IntVar()
 Estate = StringVar()
 Area = StringVar()
-Location = StringVar()
+Date = StringVar()
 Price = StringVar()
 Status = StringVar()
-Date = StringVar()
+Rooms = StringVar()
+Location = StringVar()
 
 
 lblEstate = Label(OwnerFrame, text="Estate Type:", font=(
@@ -118,12 +121,12 @@ txtArea = Entry(OwnerFrame, width=20, font=(
 txtArea.place(x=130, y=130)
 
 
-lblDate = Label(OwnerFrame, text="Date:            ", font=(
+lblLocation = Label(OwnerFrame, text="Date:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblDate.place(x=10, y=170)
-txtDate = Entry(OwnerFrame, width=20, font=(
+lblLocation.place(x=10, y=170)
+txtLocation = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Location)
-txtDate.place(x=130, y=170)
+txtLocation.place(x=130, y=170)
 
 lblPrice = Label(OwnerFrame, text="Price:            ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
@@ -150,12 +153,12 @@ txtRooms = Entry(OwnerFrame, width=20, font=(
 txtRooms.place(x=130, y=290)
 
 
-lblDate = Label(OwnerFrame, text="Location:      ", font=(
+lblLocation = Label(OwnerFrame, text="Location:      ", font=(
     'Calibri bold', 16), bg='#003566', fg='white', bd=1)
-lblDate.place(x=10, y=330)
-txtDate = Entry(OwnerFrame, width=20, font=(
+lblLocation.place(x=10, y=330)
+txtLocation = Entry(OwnerFrame, width=20, font=(
     'Calibri ', 15), textvariable=Location)
-txtDate.place(x=130, y=330)
+txtLocation.place(x=130, y=330)
 ####### Buttons #######
 btn_frame = Frame(OwnerFrame, bg='#003566', bd=1, relief=SOLID)
 btn_frame.place(x=15, y=390, width=335, height=100)
