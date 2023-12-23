@@ -4,9 +4,9 @@ from tkinter import StringVar
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import Tk
-# import sqlite3
-# from Database import Database
-# db = Database("properties.db")
+import sqlite3
+from Database import Prop
+db = Prop("properties.db")
 
 OwnerMain = Tk()
 OwnerMain.title("Owner")
@@ -17,12 +17,17 @@ OwnerMain.resizable(False, True)
 
 def displayAll():
     tv.delete(*tv.get_children())
-    # for row in db.fetch():
-    #     tv.insert("", END, values=row)
+    for row in db.fetch():
+        tv.insert("", END, values=row)
 
 
 def delete():
-    # db.remove(row[0])
+    global row
+    if not row:
+        messagebox.showerror("Error", "Please select a property to delete")
+        return
+
+    db.remove(row[0])
     Clear()
     displayAll()
 
@@ -34,13 +39,13 @@ def Clear():
     txtPrice.delete("0", END)
     txtStatus.delete("0", END)
     txtRooms.delete("0", END)
-    txtDate.delete("0", END)
+    txtLocation.delete("0", END)
 
 
 def get_data(event):
+    global row
     selected_row = tv.focus()
     data1 = tv.item(selected_row)
-    global row
     row = data1["values"]
     Estate.set(row[1])
     Area.set(row[2])
@@ -55,14 +60,14 @@ def add():
     if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "" or txtDate.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
-    # db.insert(
-    #     txtEstate.get(),
-    #     txtArea.get(),
-    #     txtDate.get(),
-    #     txtPrice.get(),
-    #     txtStatus.get(),
-    #     txtDate.get()
-    # )
+    db.insert(
+        txtEstate.get(),
+        txtArea.get(),
+        txtDate.get(),
+        txtPrice.get(),
+        txtStatus.get(),
+        txtLocation.get()
+    )
     messagebox.showinfo("Success", "Added new proprety")
     Clear()
     displayAll()
@@ -72,14 +77,15 @@ def update1():
     if txtEstate.get() == "" or txtArea.get() == "" or txtDate.get() == "" or txtPrice.get() == "" or txtStatus.get() == "" or txtRooms.get() == "" or txtDate.get() == "":
         messagebox.showerror("Error", "please fill all the entry")
         return
-    # db.update(row[0],
-    #           txtEstate.get(),
-    #           txtArea.get(),
-    #           txtLocation.get(),
-    #           txtPrice.get(),
-    #           txtStatus.get(),
-    #           txtDate.get()
-    #           )
+    db.update(row[0],
+              txtEstate.get(),
+              txtArea.get(),
+              txtDate.get(),
+              txtPrice.get(),
+              txtStatus.get(),
+              txtRooms.get(),
+              txtLocation.get()
+              )
 
     messagebox.showinfo("Success", "the proprety data is updated")
     Clear()
@@ -191,7 +197,7 @@ btnDelete = Button(btn_frame,
                    font=("calibri", 16),
                    fg='#003566',
                    bg='#f6fff8',
-                   bd=0, command=delete
+                   bd=0, command=lambda: delete()
                    ).place(x=170, y=5)
 
 
