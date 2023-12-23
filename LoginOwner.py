@@ -51,17 +51,13 @@ ctk.set_default_color_theme("dark-blue")
 def login():
     ID = entry1.get()
     password = entry2.get()
-
     conn = connect_db()
     cursor = conn.cursor()
     cursor.execute(
         "CREATE TABLE if not exists OwnerData (ID INTEGER, password INTEGER)"
     )
     cursor.execute(
-        "SELECT * FROM OwnerData WHERE ID = ? AND password = ?", (ID, password)
-    )
-
-    conn.commit()
+        "SELECT * FROM OwnerData WHERE ID = ? AND password = ?", (ID, password))
     result = cursor.fetchone()
     if result is None:
         messagebox.showerror("Error", "Invalid ID or password.")
@@ -69,7 +65,7 @@ def login():
         messagebox.showinfo("Success", "Logged in successfully!")
         OwnerLogin.destroy()
         import Owner
-
+    conn.commit()
     conn.close()
 
 
