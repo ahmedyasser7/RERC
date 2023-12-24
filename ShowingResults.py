@@ -17,28 +17,56 @@ def connect_db():
 Results = ctk.CTk()
 Results.iconbitmap('favicon.ico')
 Results.title("ShowingResults")
-Results.geometry('800x420')
-Results.resizable(False, True)
+Results.geometry('1240x620')
+# Results.resizable(False, True)
 
 frame = ctk.CTkScrollableFrame(Results)
 frame.pack(pady=20, padx=60, fill="both", expand=True)
 
 tree = Treeview(frame, columns=['id', 'Estate', 'Area',
-                'Location', 'Price', 'Status', 'Date'], show='headings', selectmode='browse')
+                'Date', 'Price', 'Status', 'Rooms', 'Location'], show='headings', selectmode='browse')
 tree.heading('id', text='ID')
 tree.heading('Estate', text='Estate')
 tree.heading('Area', text='Area')
-tree.heading('Location', text='Location')
+tree.heading('Date', text='Date')
 tree.heading('Price', text='Price')
 tree.heading('Status', text='Status')
-tree.heading('Date', text='Date')
+tree.heading('Rooms', text='No. Rooms')
+tree.heading('Location', text='Location')
 tree.column('id', width=30, anchor='center')
 
 tree.pack()
 
-estates = [(1, 'Villa', 300, 'Cairo', 7000000, 'Rented', '17-7-2023'),
-           (2, 'Room', 100, 'Alexandria', 500, 'availble', '29-12-2023'),
-           (3, 'Apartment', 120, 'Giza', 100000, 'availble', '5-9-2023')]
+# id = IntVar()
+# Estate = StringVar()
+# Area = StringVar()
+# Date = StringVar()
+# Price = StringVar()
+# Status = StringVar()
+# Rooms = StringVar()
+# Location = StringVar()
+
+# def displayAll():
+#     tr.delete(*tv.get_children())
+#     for row in db.fetch():
+#         tv.insert("", END, values=row)
+
+# def get_data(event):
+#     global row
+#     selected_row =tree.focus()
+#     data1 = tree.item(selected_row)
+#     row = data1["values"]
+#     Estate.set(row[1])
+#     Area.set(row[2])
+#     Date.set(row[3])
+#     Price.set(row[4])
+#     Status.set(row[5])
+#     Rooms.set(row[6])
+#     Location.set(row[7])
+
+estates = [(1, 'Villa', 300, 'Cairo', 7000000, 'Rented', '6', '17-7-2023'),
+           (2, 'Room', 100, 'Alexandria', 500, 'availble', '1', '29-12-2023'),
+           (3, 'Apartment', 120, 'Giza', 100000, 'availble', '3', '5-9-2023')]
 
 for estate in estates:
     tree.insert('', 'end', iid=estate[0], values=estate)
