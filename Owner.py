@@ -12,7 +12,7 @@ OwnerMain = Tk()
 OwnerMain.title("Owner")
 OwnerMain.geometry('1240x620')
 OwnerMain.iconbitmap('favicon.ico')
-OwnerMain.resizable(False, True)
+# OwnerMain.resizable(False, True)
 
 
 def displayAll():
@@ -66,6 +66,7 @@ def add():
         txtDate.get(),
         txtPrice.get(),
         txtStatus.get(),
+        txtRooms.get(),
         txtLocation.get()
     )
     messagebox.showinfo("Success", "Added new proprety")
