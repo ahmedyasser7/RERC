@@ -7,6 +7,8 @@ from tkinter.ttk import *
 from tkinter import messagebox
 from tkinter import Tk
 import sqlite3
+from Database import Prop
+db = Prop("properties.db")
 
 
 def connect_db():
@@ -70,6 +72,15 @@ estates = [(1, 'Villa', 300, 'Cairo', 7000000, 'Rented', '6', '17-7-2023'),
 
 for estate in estates:
     tree.insert('', 'end', iid=estate[0], values=estate)
+
+
+def displayAll():
+    tree.delete(*tree.get_children())
+    for row in db.fetch():
+        tree.insert("", END, values=row)
+
+
+displayAll()
 
 
 def selected():
