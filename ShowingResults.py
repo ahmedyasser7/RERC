@@ -84,6 +84,9 @@ displayAll()
 
 
 def selected():
+    if not tree.selection():
+        messagebox.showerror("Error", "please select a property")
+        return
     print(tree.selection())
     Results.destroy()
     import Payment

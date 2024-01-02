@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import tkinter as tk
 import numpy as np
+from tkinter import messagebox
 import sqlite3
 
 
@@ -39,6 +40,9 @@ entry4.pack(pady=6, padx=10)
 
 
 def Pay():
+    if entry1.get() == "" or entry2.get() == "" or entry3.get() == "" or entry4.get() == "":
+        messagebox.showerror("Error", "please fill all the entry")
+        return
     Payment.destroy()
     import SuccessfulOperation
 
